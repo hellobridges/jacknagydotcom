@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Button from './Button'
+import { ArrowRight } from 'lucide-react'
 
 export default function AIPlaybookCTA() {
   const [email, setEmail] = useState('')
@@ -34,7 +34,7 @@ export default function AIPlaybookCTA() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Get Your Free AI Automation Playbook
             </h2>
-            <p className="text-xl text-gray-400 mb-8">
+            <p className="text-xl text-gray-400 mb-12">
               The exact framework we use to implement AI systems that save 200+ hours monthly
             </p>
           </motion.div>
@@ -46,8 +46,8 @@ export default function AIPlaybookCTA() {
             viewport={{ once: true }}
             className="card max-w-2xl mx-auto"
           >
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4 text-left">
+            <div className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-6 text-left">
                 <div className="space-y-3">
                   <h3 className="font-semibold text-lg">What&apos;s Inside:</h3>
                   <ul className="space-y-2 text-sm text-gray-400">
@@ -67,22 +67,35 @@ export default function AIPlaybookCTA() {
               </div>
 
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    required
-                    className="w-full px-4 py-3 bg-background border border-gray-700 rounded-lg focus:outline-none focus:border-primary transition-colors duration-200"
-                  />
-                  <Button
-                    variant="primary"
-                    className="w-full"
-                    onClick={() => {}}
-                  >
-                    {isSubmitting ? 'Sending...' : 'Get Instant Access'}
-                  </Button>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Email + Button Combo */}
+                  <div className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
+                      required
+                      className="flex-1 px-4 py-3 bg-background/50 border border-gray-700/50 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 backdrop-blur-sm text-white placeholder-gray-400"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-200 backdrop-blur-sm border border-primary/30 hover:border-primary/50 shadow-lg hover:shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Get Instant Access
+                          <ArrowRight className="w-4 h-4" />
+                        </>
+                      )}
+                    </button>
+                  </div>
                   <p className="text-sm text-gray-500">
                     No spam. Unsubscribe anytime.
                   </p>

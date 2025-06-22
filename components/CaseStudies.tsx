@@ -28,7 +28,7 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="section-spacing">
+    <section id="case-studies" className="pt-4 md:pt-8 pb-16 md:pb-24 lg:pb-32">
       <div className="section-padding">
         <div className="max-w-4xl mx-auto mb-16">
           <motion.div

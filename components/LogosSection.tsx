@@ -6,13 +6,13 @@ const logos = [
   { name: 'Popular Mechanics', text: 'POPULAR MECHANICS' },
   { name: 'Yahoo Finance', text: 'YAHOO FINANCE' },
   { name: 'Digital Journal', text: 'DIGITAL JOURNAL' },
-  { name: 'Associated Press', text: 'ASSOCIATED PRESS' },
+  { name: 'Associated Press', text: 'AP' },
   { name: 'Bloomberg', text: 'BLOOMBERG' },
 ]
 
 export default function LogosSection() {
   return (
-    <section className="section-spacing">
+    <section className="py-16 md:py-20 pb-4 md:pb-8">
       <div className="section-padding">
         <motion.div
           initial={{ opacity: 0 }}
@@ -28,9 +28,9 @@ export default function LogosSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="text-gray-500 hover:text-gray-300 transition-colors duration-200"
+              className="text-gray-400 hover:text-gray-200 transition-colors duration-200 border border-gray-700 rounded-md px-4 py-3 bg-gray-900/30 backdrop-blur-sm"
             >
-              <span className="text-sm md:text-base font-semibold tracking-wider">
+              <span className="text-sm md:text-base font-bold tracking-wider">
                 {logo.text}
               </span>
             </motion.div>
