@@ -9,7 +9,6 @@
 
 This project provides a streamlined way to work with AI assistants (like Claude or GPT-4) inside the Cursor IDE, making development more autonomous and consistent. It helps the AI remember project context and follow a structured process, even across different sessions. Think of it as giving your AI assistant a reliable memory and a clear playbook.  This system now supports iterative processing of lists of items, enhancing its capabilities for complex tasks.
 
-This setup is inspired by the ideas in the original `kleosr/cursorkleosr` repository but simplifies it drastically for better autonomy and lower overhead.
 
 ## Thanks to
 
@@ -23,7 +22,7 @@ This setup is inspired by the ideas in the original `kleosr/cursorkleosr` reposi
 
 ## How it Works: The Two-File System
 
-Instead of many complex rule files, this system uses just two core Markdown files:
+Instead of many complex rule files, this system uses just two core Markdown files stored in `.cursor/workflow`:
 
 1.  **`project_config.md` (Long-Term Memory - LTM):**
     *   **Purpose:** Holds the stable, essential information about your project.
@@ -81,23 +80,8 @@ The AI follows the constraints of the current phase, guided by the rules in `wor
 
 ## Getting Started
 
-1.  **Locate the Files:** The core files `project_config.md` and `workflow_state.md` are located within the `cursorkleosr/` directory.
+1.  **Locate the Files:** The core files `project_config.md` and `workflow_state.md` are located within the `.cursor/workflow` directory.
 2.  **Fill `project_config.md`:** Add your project's specific goals, tech stack, key patterns, constraints, and tokenization settings.
 3.  **Instruct the AI:** Start your Cursor chat with a clear system prompt instructing the AI to operate *exclusively* based on these two files and the autonomous loop described above. (A good system prompt is crucial for enforcement!).
     *   *Example Snippet for System Prompt:* "You are an autonomous AI developer. Operate solely based on `project_config.md` and `workflow_state.md`. Before every action, read `workflow_state.md`, determine state, consult `## Rules`, act accordingly, then immediately update `workflow_state.md`."
 4.  **Give the First Task:** The AI will initialize based on `RULE_INIT_01` and ask for the first task.
-
-## What about `.cursorrules`?
-
-The main `.cursorrules` file is now less important for the workflow itself. You might still use it for global Cursor settings (like preferred AI models or global ignores), but the core logic resides in `workflow_state.md`.
-
-## License
-
-This project concept is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-Feel free to adapt and improve this system. Share your experiences and refinements!
-
-## Git Workflow Integration
-This workflow now includes a simple, AI-assisted Git integration to encourage consistent version control. After a successful task, the AI will prompt to commit the changes, log the commit SHA to `workflow_state.md`, and allow for simple rollbacks or diffs using natural language.
